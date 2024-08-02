@@ -14,41 +14,14 @@
 # =========================================================================
 """Provides an interface to _impl."""
 
-
 # noinspection PyUnresolvedReferences
-from . import _impl
+from ._impl import (
+    signature_channels, signature_backward, signature_forward, signature_checkargs,
+    signature_combine_backward, signature_combine_forward
+)
 
 
-# For some reason some exceptions on a Mac are converted to RuntimeErrors rather than ValueErrors.
-# So we have to make a conversion.
-# This isn't perfect; any genuine RuntimeErrors will now always be ValueErrors.
-# So for consistency across platforms we _always_ convert RuntimeErrors to ValueErrors.
-def _wrap(fn):
-    # We'd like to perform a check that fn is actually a function here
-    # But that throws an error with the mocking used in the documentation
-    # Easiest to not check and rely on the tests to, y'know, test.
-
-    # We'd also like to @functools.wrap(fn) this
-    # but again it fails with autodoc.
-    # Not super important, as nothing in this module should be public anyway.
-    def wrapped(*args, **kwargs):
-        try:
-            return fn(*args, **kwargs)
-        except RuntimeError as e:
-            raise ValueError(str(e))
-    return wrapped
-
-
-LogSignatureMode = _impl.LogSignatureMode  # not wrapped because it's not a function
-signature_to_logsignature_forward = _wrap(_impl.signature_to_logsignature_forward)
-signature_to_logsignature_backward = _wrap(_impl.signature_to_logsignature_backward)
-make_lyndon_info = _wrap(_impl.make_lyndon_info)
-signature_forward = _wrap(_impl.signature_forward)
-signature_backward = _wrap(_impl.signature_backward)
-signature_checkargs = _wrap(_impl.signature_checkargs)
-signature_channels = _wrap(_impl.signature_channels)
-signature_combine_forward = _wrap(_impl.signature_combine_forward)
-signature_combine_backward = _wrap(_impl.signature_combine_backward)
-lyndon_words_to_basis_transform = _wrap(_impl.lyndon_words_to_basis_transform)
-lyndon_words = _wrap(_impl.lyndon_words)
-lyndon_brackets = _wrap(_impl.lyndon_brackets)
+__all__ = [
+    'signature_backward', 'signature_forward', 'signature_channels',
+    'signature_combine_backward', 'signature_combine_forward', 'signature_checkargs'
+]

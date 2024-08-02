@@ -15,6 +15,3 @@
 """This module exposes functionality that isn't a stable part of the public API. In particular that means that
 everything here is experimental and may change without notice.
 """
-
-
-from .impl import (lyndon_words_to_basis_transform,)

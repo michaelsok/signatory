@@ -85,7 +85,7 @@ def slice_by_term(inputs: Tensor, outputs: List[Tensor], input_channel_size: int
     outputs.clear()
 
     for _ in range(depth):
-        outputs.append(inputs.narrow(dim=CHANNEL_DIM, start=current_memory_pos, len=current_memory_length))
+        outputs.append(inputs.narrow(dim=CHANNEL_DIM, start=current_memory_pos, length=current_memory_length))
         current_memory_pos += current_memory_length
         current_memory_length *= input_channel_size
     return 

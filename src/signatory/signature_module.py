@@ -58,7 +58,6 @@ class _SignatureFunction(autograd.Function):
                                                          path.device)
         initial, initial_value = interpret_initial(initial)
 
-        import pdb; pdb.set_trace()
         signature_, path_increments = impl.signature_forward(path, depth, stream, basepoint, basepoint_value, inverse,
                                                              initial, initial_value, scalar_term)
         ctx.save_for_backward(signature_, path_increments)

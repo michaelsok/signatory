@@ -161,7 +161,7 @@ def mult_fused_restricted_exp_cpu(next_tensor: Tensor, previous: List[Tensor],
             new_scratch = [None] * len(old_scratch) * input_channel_size
         else:
             new_scratch = [None] * (input_channel_size ** (depth - 2))
-            old_scratch = [None] * len(old_scratch) * input_channel_size
+            old_scratch = [None] * len(new_scratch) * input_channel_size
 
     for batch_index in range(batch_size):
         mult_fused_restricted_exp_cpu_inner(next_tensor_accessor,

@@ -22,9 +22,9 @@ import re
 
 
 project = 'signatory'
-author = "Patrick Kidger"
-copyright = "2019, {}".format(author)
-author_email = "contact@kidger.site"
+author = "Michaël SOK"
+copyright = "2024, {}".format(author)
+author_email = ""
 url = "https://github.com/patrick-kidger/signatory"
 license = "Apache-2.0"
 python_requires = "~=3.6"
@@ -41,12 +41,11 @@ classifiers = ["Development Status :: 5 - Production/Stable",
                "Programming Language :: Python :: 3.6",
                "Programming Language :: Python :: 3.7",
                "Programming Language :: Python :: 3.8",
-               "Programming Language :: Python :: Implementation :: CPython",
                "Topic :: Scientific/Engineering :: Artificial Intelligence",
                "Topic :: Scientific/Engineering :: Information Analysis",
                "Topic :: Scientific/Engineering :: Mathematics"]
 
-description = 'Differentiable computations of the signature and logsignature transforms, on both CPU and GPU.'
+description = 'Differentiable computations of the signature and logsignature transforms, on CPU with pure Python.'
 
 here = os.path.realpath(os.path.dirname(__file__))
 

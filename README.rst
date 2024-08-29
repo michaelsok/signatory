@@ -4,9 +4,9 @@
 
 .. |Signatory| image:: https://raw.githubusercontent.com/patrick-kidger/signatory/master/docs/_static/signatory.png
 
-Differentiable computations of the signature and logsignature transforms, on both CPU and GPU.
-
-
+Differentiable computations of the signature and logsignature transforms, on CPU with pure Python implementation.
+Reimplementation of the C++ part originally written by Patrick KIDGER. 
+Currently, only signature is functional.
 
 
 What is the signature transform?

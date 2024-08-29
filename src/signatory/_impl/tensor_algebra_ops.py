@@ -198,7 +198,7 @@ def mult_fused_restricted_exp_cpu_inner(next_tensor_accessor: np.ndarray,
         for scratch_index in range(0, input_channel_size):
             new_scratch[scratch_index] = previous_accessor[0][batch_index][scratch_index] +\
                   next_divided[next_divided_index_part + scratch_index]
-        
+
         for j in range(1, depth_index):
             k = depth_index - 1 - j
             old_scratch, new_scratch = new_scratch, old_scratch
@@ -224,6 +224,14 @@ def mult_fused_restricted_exp_cpu_inner(next_tensor_accessor: np.ndarray,
                     previous_accessor_index = new_scratch_index * input_channel_size + next_index
                 adder = new_scratch[new_scratch_index] * next_tensor_accessor[batch_index][next_index]
                 previous_accessor[depth_index][batch_index][previous_accessor_index] += adder
+
+    for channel_index in range(input_channel_size):
+        previous_accessor[0][batch_index][channel_index] += next_tensor_accessor[batch_index][channel_index]
+
+    depth_mod = depth % 4
+    if (depth_mod == 0) or (depth_mod == 3):
+        old_scratch, new_scratch = new_scratch, old_scratch
+
     return 
 
 
